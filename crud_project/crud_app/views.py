@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from .models import Student
@@ -21,12 +21,12 @@ def student_create(request):
     return render(request, 'student_form.html',{'form':form})
 
 
-def student_update(request):
+def student_update(request,id):
     student = get_object_or_404(Student, id = id)
     form = StudentForm(request.POST or None, instance = student)
     if form.is_valid():
         form.save()
-        return redirect('studnet_list')
+        return redirect('student_list')
     return render(request, 'student_form.html',{'form':form})
 
 def student_delete(request,id):

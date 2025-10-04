@@ -5,7 +5,7 @@ from django.db import models
 class Student(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
-    course = models.EmailField()
+    course = models.CharField(max_length = 100)
     gender = models.CharField(max_length=10, choices=[("M","Male"), ("F","Female")])
     is_active = models.BooleanField(default = True)
 
